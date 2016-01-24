@@ -1,0 +1,18 @@
+Hooked up behind the scenes:
+- Diffuse map to color in the Base layer
+
+- Specular map to color in the 'reflect_dielectric' layer
+
+- Normal map via a regular 2d bump node to the Bump slots for all layers 
+(if you wonder why; mila_materials allow for nice effects like smooth coatings on a rough surface, 
+by having a smooth normal map on the glossy reflect layer and a rough normal map in the diffuse underneath.)
+
+- Roughness map* through a gamma correction node (value 2.2) to the roughness on all reflect layers.
+
+- Metallic map* to the weight channels of 'reflect_metal' and 'reflect_metal_shine'(which is the channel for that extra bit 
+of fresnel I mentioned earlier), and mapped through a reverse node to the weight of the 'reflect_dielectric' layer. Actually, 
+I also ran this map through the gamma correct node. This map would mostly be black and white, but in transition area's it wouldn't be,
+and I just assumed this correction would also be required. Not sure if it is though, that requires a bit of testing. 
+
+- Opacity (not applied in the screenshots, but succesfully tested) via a reverse node to the weight channel of a new weighted layer
+ set to "transparency", leaving its transparancy color to white.
