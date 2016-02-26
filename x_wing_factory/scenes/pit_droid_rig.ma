@@ -1,6 +1,6 @@
 //Maya ASCII 2016 scene
 //Name: pit_droid_rig.ma
-//Last modified: Wed, Feb 10, 2016 01:58:44 PM
+//Last modified: Fri, Feb 26, 2016 04:02:09 PM
 //Codeset: 1252
 file -rdi 1 -ns "pit_droid_01" -rfn "pit_droid_01RN" -op "v=0;" -typ "mayaAscii"
 		 "C:/Users/Brad/Documents/x-wing-factory/x_wing_factory//scenes/pit_droid_01.ma";
@@ -9,6 +9,7 @@ file -r -ns "pit_droid_01" -dr 1 -rfn "pit_droid_01RN" -op "v=0;" -typ "mayaAsci
 requires maya "2016";
 requires -nodeType "mentalrayFramebuffer" -nodeType "mentalrayOptions" -nodeType "mentalrayGlobals"
 		 -nodeType "mentalrayItemsList" -dataType "byteArray" "Mayatomr" "2016.0 - 3.13.1.2 ";
+requires "stereoCamera" "10.0";
 requires "stereoCamera" "10.0";
 currentUnit -l centimeter -a degree -t film;
 fileInfo "application" "maya";
@@ -20,13 +21,13 @@ fileInfo "license" "student";
 createNode transform -s -n "persp";
 	rename -uid "9BD920CC-49F2-78CA-7D14-BD95F7442712";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" -21.531026988569707 19.689213056391942 42.461970434088855 ;
-	setAttr ".r" -type "double3" -13.538352722416224 -386.99999999960858 -8.9240499230621903e-016 ;
+	setAttr ".t" -type "double3" -21.730291994562798 22.73016458690352 33.912891848141228 ;
+	setAttr ".r" -type "double3" -19.538352722419049 -394.19999999944957 9.6137993696455718e-016 ;
 createNode camera -s -n "perspShape" -p "persp";
 	rename -uid "88BDCA63-4928-5184-1A46-AC87F8242895";
 	setAttr -k off ".v" no;
 	setAttr ".fl" 34.999999999999993;
-	setAttr ".coi" 50.727441930386448;
+	setAttr ".coi" 45.593351532367819;
 	setAttr ".imn" -type "string" "persp";
 	setAttr ".den" -type "string" "persp_depth";
 	setAttr ".man" -type "string" "persp_mask";
@@ -881,6 +882,9 @@ createNode nurbsCurve -n "root_cntrlShape" -p "root_cntrl";
 createNode transform -n "base_cntrl" -p "root_cntrl";
 	rename -uid "AD9BB3EA-4695-5218-EF50-C0996A9C40C7";
 	setAttr ".s" -type "double3" 0.90727326681791531 0.90727326681791531 0.90727326681791531 ;
+	setAttr -l on ".sx";
+	setAttr -l on ".sy";
+	setAttr -l on ".sz";
 createNode nurbsCurve -n "base_cntrlShape" -p "base_cntrl";
 	rename -uid "3F6A902A-48C5-F9A8-10E3-B98629C3A161";
 	setAttr -k off ".v";
@@ -922,6 +926,9 @@ createNode transform -n "upper_hip_cntrl" -p "base_cntrl";
 	setAttr -l on ".rx";
 	setAttr -l on ".rz";
 	setAttr ".s" -type "double3" 0.16188757450546232 0.16188757450546232 0.16188757450546232 ;
+	setAttr -l on ".sx";
+	setAttr -l on ".sy";
+	setAttr -l on ".sz";
 	setAttr ".rp" -type "double3" 8.5853342310721794e-005 1.5311987028443894 -0.0029223626668482441 ;
 	setAttr ".sp" -type "double3" 0.00053032694184830737 9.4584078334728812 -0.018051803393654781 ;
 	setAttr ".spt" -type "double3" -0.00044447359953758556 -7.9272091306284915 0.015129440726806536 ;
@@ -952,6 +959,9 @@ createNode transform -n "hips_2_cntrl" -p "upper_hip_cntrl";
 	setAttr -l on ".tz";
 	setAttr -l on ".ry";
 	setAttr -l on ".rz";
+	setAttr -l on ".sx";
+	setAttr -l on ".sy";
+	setAttr -l on ".sz";
 	setAttr ".rp" -type "double3" 0 9.4828914508607998 0 ;
 	setAttr ".sp" -type "double3" 0 9.4828914508607998 0 ;
 createNode nurbsCurve -n "hips_2_cntrlShape" -p "hips_2_cntrl";
@@ -966,6 +976,9 @@ createNode transform -n "neck_cntrl" -p "hips_2_cntrl";
 	setAttr -l on ".tz";
 	setAttr -l on ".ry";
 	setAttr -l on ".rz";
+	setAttr -l on ".sx";
+	setAttr -l on ".sy";
+	setAttr -l on ".sz";
 	setAttr ".rp" -type "double3" 0.00053015921295216316 13.958286459864224 -0.24489254966697696 ;
 	setAttr ".sp" -type "double3" 0.00053015921295216316 13.958286459864224 -0.24489254966697696 ;
 createNode nurbsCurve -n "neck_cntrlShape" -p "neck_cntrl";
@@ -994,6 +1007,9 @@ createNode transform -n "head_cntrl" -p "neck_cntrl";
 	setAttr -l on ".tz";
 	setAttr -l on ".rx";
 	setAttr -l on ".rz";
+	setAttr -l on ".sx";
+	setAttr -l on ".sy";
+	setAttr -l on ".sz";
 	setAttr ".rp" -type "double3" 0.00053022684097849221 15.527977633148017 -0.23391638452472152 ;
 	setAttr ".sp" -type "double3" 0.00053022684097849221 15.527977633148017 -0.23391638452472152 ;
 createNode nurbsCurve -n "head_cntrlShape" -p "head_cntrl";
@@ -1022,6 +1038,9 @@ createNode transform -n "right_shoulder_cntrl" -p "hips_2_cntrl";
 	setAttr -l on ".tx";
 	setAttr -l on ".ty";
 	setAttr -l on ".tz";
+	setAttr -l on ".sx";
+	setAttr -l on ".sy";
+	setAttr -l on ".sz";
 	setAttr ".rp" -type "double3" -1.2861600000056237 13.324799999999883 -0.11719099993150826 ;
 	setAttr ".sp" -type "double3" -1.2861600000056237 13.324799999999883 -0.11719099993150826 ;
 	setAttr -k on ".arm_rotation";
@@ -1037,6 +1056,9 @@ createNode transform -n "right_elbow_cntrl" -p "right_shoulder_cntrl";
 	setAttr -l on ".tz";
 	setAttr -l on ".ry";
 	setAttr -l on ".rz";
+	setAttr -l on ".sx";
+	setAttr -l on ".sy";
+	setAttr -l on ".sz";
 	setAttr ".rp" -type "double3" -1.9015701216389 10.80040002229469 -0.20485478806166968 ;
 	setAttr ".sp" -type "double3" -1.9015701216389 10.80040002229469 -0.20485478806166968 ;
 createNode nurbsCurve -n "right_elbow_cntrlShape" -p "right_elbow_cntrl";
@@ -1105,6 +1127,9 @@ createNode transform -n "left_shoulder_cntrl" -p "hips_2_cntrl";
 	setAttr -l on ".tx";
 	setAttr -l on ".ty";
 	setAttr -l on ".tz";
+	setAttr -l on ".sx";
+	setAttr -l on ".sy";
+	setAttr -l on ".sz";
 	setAttr ".rp" -type "double3" 1.2872182258629394 13.324771523860631 -0.11719126126192703 ;
 	setAttr ".sp" -type "double3" 1.2872182258629394 13.324771523860631 -0.11719126126192703 ;
 createNode nurbsCurve -n "left_shoulder_cntrlShape" -p "left_shoulder_cntrl";
@@ -1133,6 +1158,9 @@ createNode transform -n "left_elbow_cntrl" -p "left_shoulder_cntrl";
 	setAttr -l on ".tz";
 	setAttr -l on ".ry";
 	setAttr -l on ".rz";
+	setAttr -l on ".sx";
+	setAttr -l on ".sy";
+	setAttr -l on ".sz";
 	setAttr ".rp" -type "double3" 1.9026279797533003 10.800438244796146 -0.20485514014725614 ;
 	setAttr ".sp" -type "double3" 1.9026279797533003 10.800438244796146 -0.20485514014725614 ;
 createNode nurbsCurve -n "left_elbow_cntrlShape" -p "left_elbow_cntrl";
@@ -1227,8 +1255,10 @@ createNode nurbsCurve -n "left_hip_cntrlShape" -p "left_hip_cntrl";
 createNode transform -n "right_foot_cntrl" -p "root_cntrl";
 	rename -uid "54DEC671-4022-DE6E-2A21-F4923ACF5585";
 	setAttr ".t" -type "double3" 1.0072756704481326e-016 0 0 ;
-	setAttr -l on ".rz";
 	setAttr ".s" -type "double3" 0.14687626857879946 0.14687626857879946 0.14687626857879946 ;
+	setAttr -l on ".sx";
+	setAttr -l on ".sy";
+	setAttr -l on ".sz";
 	setAttr ".rp" -type "double3" -0.15598943577415544 0 0 ;
 	setAttr ".sp" -type "double3" -1.0620465598938253 0 0 ;
 	setAttr ".spt" -type "double3" 0.90605712411966988 0 0 ;
@@ -1269,8 +1299,10 @@ createNode ikHandle -n "ikHandle6" -p "right_foot_cntrl";
 createNode transform -n "left_foot_cntrl" -p "root_cntrl";
 	rename -uid "BED0BD0B-4CC2-4C04-7615-A18D1684B64A";
 	setAttr ".t" -type "double3" -1.0072756704481326e-016 0 0 ;
-	setAttr -l on ".rz";
 	setAttr ".s" -type "double3" 0.14687626857879946 0.14687626857879946 0.14687626857879946 ;
+	setAttr -l on ".sx";
+	setAttr -l on ".sy";
+	setAttr -l on ".sz";
 	setAttr ".rp" -type "double3" 0.14344047764843462 0 0 ;
 	setAttr ".sp" -type "double3" 0.97660758294304451 0 0 ;
 	setAttr ".spt" -type "double3" -0.8331671052946098 0 0 ;
@@ -1304,7 +1336,7 @@ createNode ikHandle -n "ikHandle4" -p "left_foot_cntrl";
 	setAttr ".pv" -type "double3" 0.015830479681563234 -0.62169136244783696 -0.19013905878301493 ;
 	setAttr ".roc" yes;
 createNode fosterParent -n "pit_droid_01RNfosterParent1";
-	rename -uid "2E1A952C-47E6-804F-FA05-BB80D2132728";
+	rename -uid "513F6C0B-4877-3745-3C89-BF917175EB7B";
 createNode mesh -n "body_mainShapeDeformed" -p "pit_droid_01RNfosterParent1";
 	rename -uid "3A7733BA-486E-1064-3103-7BB95F39BC9B";
 	setAttr -k off ".v";
@@ -1714,21 +1746,24 @@ createNode mesh -n "camera_eyeShapeDeformed" -p "pit_droid_01RNfosterParent1";
 	setAttr ".covm[0]"  0 1 1;
 	setAttr ".cdvm[0]"  0 1 1;
 createNode lightLinker -s -n "lightLinker1";
-	rename -uid "EB8F0D09-420D-5B3D-3769-5CB012E91431";
-	setAttr -s 6 ".lnk";
-	setAttr -s 6 ".slnk";
+	rename -uid "8619B026-4B7C-A72C-4559-C3A647E850C8";
+	setAttr -s 8 ".lnk";
+	setAttr -s 8 ".slnk";
 createNode displayLayerManager -n "layerManager";
-	rename -uid "A8434B0D-47F3-03B9-F974-62804B8D4D8A";
+	rename -uid "08983A46-408C-F80D-8738-0CA4DB6837B1";
+	setAttr ".cdl" 1;
+	setAttr ".dli[1]"  1;
+	setAttr -s 2 ".dli";
 createNode displayLayer -n "defaultLayer";
 	rename -uid "14319512-458D-FA03-175B-D1830E2650B2";
 createNode renderLayerManager -n "renderLayerManager";
-	rename -uid "CE9B3865-41DD-8CAC-1FA0-E1A306813E1B";
+	rename -uid "55756CB7-4EAE-3224-C561-1182E75ECDC3";
 createNode renderLayer -n "defaultRenderLayer";
 	rename -uid "8CECA02D-46D4-F07A-5F9B-A4800CA252E1";
 	setAttr ".g" yes;
 createNode reference -n "pit_droid_01RN";
 	rename -uid "61B6ECFA-4F7C-7F55-B924-FEBE75E13BD8";
-	setAttr -s 136 ".phl";
+	setAttr -s 137 ".phl";
 	setAttr ".phl[1]" 0;
 	setAttr ".phl[2]" 0;
 	setAttr ".phl[3]" 0;
@@ -1865,9 +1900,10 @@ createNode reference -n "pit_droid_01RN";
 	setAttr ".phl[134]" 0;
 	setAttr ".phl[135]" 0;
 	setAttr ".phl[136]" 0;
+	setAttr ".phl[137]" 0;
 	setAttr ".ed" -type "dataReferenceEdits" 
 		"pit_droid_01RN"
-		"pit_droid_01RN" 410
+		"pit_droid_01RN" 411
 		2 "|pit_droid_01:right_arm" "visibility" " 1"
 		2 "|pit_droid_01:left_arm" "visibility" " 1"
 		2 "|pit_droid_01:right_leg" "visibility" " 1"
@@ -1885,6 +1921,7 @@ createNode reference -n "pit_droid_01RN";
 		" 0"
 		2 "|pit_droid_01:right_foot|pit_droid_01:right_footShape" "uvPivot" " -type \"double2\" 0.56364519894123077 0.45205541513860226"
 		
+		2 "|pit_droid_01:directionalLight1" "miLabel" " 0"
 		8 "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:camera_head" "translateX"
 		
 		8 "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:camera_head" "translateY"
@@ -2530,7 +2567,7 @@ createNode reference -n "pit_droid_01RN";
 		9 "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:body_main" "scaleX"
 		9 "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:body_main" "scaleY"
 		9 "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:body_main" "scaleZ"
-		"pit_droid_01RN" 255
+		"pit_droid_01RN" 260
 		0 "|pit_droid_01RNfosterParent1|camera_eyeShapeDeformed" "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:camera_head|pit_droid_01:camera_eye" 
 		"-s -r "
 		0 "|pit_droid_01RNfosterParent1|camera_accesorieShape2Deformed" "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:camera_head|pit_droid_01:camera_accesorie2" 
@@ -2724,22 +2761,32 @@ createNode reference -n "pit_droid_01RN";
 		"intermediateObject" " 1"
 		2 "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:left_upper_leg|pit_droid_01:left_upper_legShape" 
 		"vertexColorSource" " 2"
+		2 "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:right_foor" "visibility" 
+		" 1"
 		2 "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:right_foor|pit_droid_01:right_foorShape" 
 		"intermediateObject" " 1"
 		2 "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:right_foor|pit_droid_01:right_foorShape" 
 		"vertexColorSource" " 2"
+		2 "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:right_toe_1" "visibility" 
+		" 1"
 		2 "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:right_toe_1|pit_droid_01:right_toe_Shape1" 
 		"intermediateObject" " 1"
 		2 "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:right_toe_1|pit_droid_01:right_toe_Shape1" 
 		"vertexColorSource" " 2"
+		2 "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:right_toe_2" "visibility" 
+		" 1"
 		2 "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:right_toe_2|pit_droid_01:right_toe_Shape2" 
 		"intermediateObject" " 1"
 		2 "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:right_toe_2|pit_droid_01:right_toe_Shape2" 
 		"vertexColorSource" " 2"
+		2 "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:right_lower_leg" "visibility" 
+		" 1"
 		2 "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:right_lower_leg|pit_droid_01:right_lower_legShape" 
 		"intermediateObject" " 1"
 		2 "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:right_lower_leg|pit_droid_01:right_lower_legShape" 
 		"vertexColorSource" " 2"
+		2 "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:right_upper_leg" "visibility" 
+		" 1"
 		2 "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:right_upper_leg|pit_droid_01:right_upper_legShape" 
 		"intermediateObject" " 1"
 		2 "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:right_upper_leg|pit_droid_01:right_upper_legShape" 
@@ -2766,82 +2813,81 @@ createNode reference -n "pit_droid_01RN";
 		"intermediateObject" " 1"
 		2 "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:body_main|pit_droid_01:body_mainShape" 
 		"vertexColorSource" " 2"
-		2 "|pit_droid_01:directionalLight1" "miLabel" " 0"
-		5 3 "pit_droid_01RN" "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:camera_head|pit_droid_01:camera_headShape.worldMesh" 
+		5 4 "pit_droid_01RN" "|pit_droid_01:pit_droid_mesh_grp.drawOverride" 
 		"pit_droid_01RN.placeHolderList[1]" ""
-		5 3 "pit_droid_01RN" "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:camera_head|pit_droid_01:camera_eye|pit_droid_01:camera_eyeShape.worldMesh" 
+		5 3 "pit_droid_01RN" "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:camera_head|pit_droid_01:camera_headShape.worldMesh" 
 		"pit_droid_01RN.placeHolderList[2]" ""
-		5 3 "pit_droid_01RN" "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:camera_head|pit_droid_01:camera_accesorie2|pit_droid_01:camera_accesorieShape2.worldMesh" 
+		5 3 "pit_droid_01RN" "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:camera_head|pit_droid_01:camera_eye|pit_droid_01:camera_eyeShape.worldMesh" 
 		"pit_droid_01RN.placeHolderList[3]" ""
-		5 3 "pit_droid_01RN" "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:camera_head|pit_droid_01:camera_accesorie1|pit_droid_01:camera_accesorie1Shape.worldMesh" 
+		5 3 "pit_droid_01RN" "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:camera_head|pit_droid_01:camera_accesorie2|pit_droid_01:camera_accesorieShape2.worldMesh" 
 		"pit_droid_01RN.placeHolderList[4]" ""
-		5 3 "pit_droid_01RN" "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:camera_head|pit_droid_01:camera_accesorie|pit_droid_01:camera_accesorieShape.worldMesh" 
+		5 3 "pit_droid_01RN" "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:camera_head|pit_droid_01:camera_accesorie1|pit_droid_01:camera_accesorie1Shape.worldMesh" 
 		"pit_droid_01RN.placeHolderList[5]" ""
-		5 3 "pit_droid_01RN" "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:neck|pit_droid_01:neckShape.worldMesh" 
+		5 3 "pit_droid_01RN" "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:camera_head|pit_droid_01:camera_accesorie|pit_droid_01:camera_accesorieShape.worldMesh" 
 		"pit_droid_01RN.placeHolderList[6]" ""
-		5 3 "pit_droid_01RN" "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:right_upper_arm|pit_droid_01:right_upper_armShape.worldMesh" 
+		5 3 "pit_droid_01RN" "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:neck|pit_droid_01:neckShape.worldMesh" 
 		"pit_droid_01RN.placeHolderList[7]" ""
-		5 3 "pit_droid_01RN" "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:left_upper_arm|pit_droid_01:left_upper_armShape.worldMesh" 
+		5 3 "pit_droid_01RN" "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:right_upper_arm|pit_droid_01:right_upper_armShape.worldMesh" 
 		"pit_droid_01RN.placeHolderList[8]" ""
-		5 3 "pit_droid_01RN" "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:right_3_finger_2|pit_droid_01:right_3_finger_2Shape.worldMesh" 
+		5 3 "pit_droid_01RN" "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:left_upper_arm|pit_droid_01:left_upper_armShape.worldMesh" 
 		"pit_droid_01RN.placeHolderList[9]" ""
-		5 3 "pit_droid_01RN" "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:right_3_finger_1|pit_droid_01:right_3_finger_Shape1.worldMesh" 
+		5 3 "pit_droid_01RN" "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:right_3_finger_2|pit_droid_01:right_3_finger_2Shape.worldMesh" 
 		"pit_droid_01RN.placeHolderList[10]" ""
-		5 3 "pit_droid_01RN" "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:right_2_finger_2|pit_droid_01:right_2_finger_Shape2.worldMesh" 
+		5 3 "pit_droid_01RN" "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:right_3_finger_1|pit_droid_01:right_3_finger_Shape1.worldMesh" 
 		"pit_droid_01RN.placeHolderList[11]" ""
-		5 3 "pit_droid_01RN" "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:right_2_finger_1|pit_droid_01:right_2_finger_Shape1.worldMesh" 
+		5 3 "pit_droid_01RN" "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:right_2_finger_2|pit_droid_01:right_2_finger_Shape2.worldMesh" 
 		"pit_droid_01RN.placeHolderList[12]" ""
-		5 3 "pit_droid_01RN" "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:right_1_finger_1|pit_droid_01:right_1_finger_Shape1.worldMesh" 
+		5 3 "pit_droid_01RN" "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:right_2_finger_1|pit_droid_01:right_2_finger_Shape1.worldMesh" 
 		"pit_droid_01RN.placeHolderList[13]" ""
-		5 3 "pit_droid_01RN" "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:right_lower_arm|pit_droid_01:right_lower_armShape.worldMesh" 
+		5 3 "pit_droid_01RN" "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:right_1_finger_1|pit_droid_01:right_1_finger_Shape1.worldMesh" 
 		"pit_droid_01RN.placeHolderList[14]" ""
-		5 3 "pit_droid_01RN" "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:left_lower_arm|pit_droid_01:left_lower_armShape.worldMesh" 
+		5 3 "pit_droid_01RN" "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:right_lower_arm|pit_droid_01:right_lower_armShape.worldMesh" 
 		"pit_droid_01RN.placeHolderList[15]" ""
-		5 3 "pit_droid_01RN" "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:left_1_finger_1|pit_droid_01:left_1_finger_Shape1.worldMesh" 
+		5 3 "pit_droid_01RN" "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:left_lower_arm|pit_droid_01:left_lower_armShape.worldMesh" 
 		"pit_droid_01RN.placeHolderList[16]" ""
-		5 3 "pit_droid_01RN" "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:left_2_finger_1|pit_droid_01:left_2_finger_Shape1.worldMesh" 
+		5 3 "pit_droid_01RN" "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:left_1_finger_1|pit_droid_01:left_1_finger_Shape1.worldMesh" 
 		"pit_droid_01RN.placeHolderList[17]" ""
-		5 3 "pit_droid_01RN" "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:left_2_finger_2|pit_droid_01:left_2_finger_Shape2.worldMesh" 
+		5 3 "pit_droid_01RN" "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:left_2_finger_1|pit_droid_01:left_2_finger_Shape1.worldMesh" 
 		"pit_droid_01RN.placeHolderList[18]" ""
-		5 3 "pit_droid_01RN" "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:left_3_finger_1|pit_droid_01:left_3_finger_Shape1.worldMesh" 
+		5 3 "pit_droid_01RN" "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:left_2_finger_2|pit_droid_01:left_2_finger_Shape2.worldMesh" 
 		"pit_droid_01RN.placeHolderList[19]" ""
-		5 3 "pit_droid_01RN" "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:left_3_finger_2|pit_droid_01:left_3_finger_Shape2.worldMesh" 
+		5 3 "pit_droid_01RN" "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:left_3_finger_1|pit_droid_01:left_3_finger_Shape1.worldMesh" 
 		"pit_droid_01RN.placeHolderList[20]" ""
-		5 3 "pit_droid_01RN" "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:lef_lower_leg|pit_droid_01:lef_lower_legShape.worldMesh" 
+		5 3 "pit_droid_01RN" "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:left_3_finger_2|pit_droid_01:left_3_finger_Shape2.worldMesh" 
 		"pit_droid_01RN.placeHolderList[21]" ""
-		5 3 "pit_droid_01RN" "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:left_foot|pit_droid_01:left_footShape.worldMesh" 
+		5 3 "pit_droid_01RN" "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:lef_lower_leg|pit_droid_01:lef_lower_legShape.worldMesh" 
 		"pit_droid_01RN.placeHolderList[22]" ""
-		5 3 "pit_droid_01RN" "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:left_toe_2|pit_droid_01:left_toe_Shape2.worldMesh" 
+		5 3 "pit_droid_01RN" "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:left_foot|pit_droid_01:left_footShape.worldMesh" 
 		"pit_droid_01RN.placeHolderList[23]" ""
-		5 3 "pit_droid_01RN" "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:left_toe_1|pit_droid_01:left_toe_Shape1.worldMesh" 
+		5 3 "pit_droid_01RN" "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:left_toe_2|pit_droid_01:left_toe_Shape2.worldMesh" 
 		"pit_droid_01RN.placeHolderList[24]" ""
-		5 3 "pit_droid_01RN" "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:hips_1|pit_droid_01:hips_Shape1.worldMesh" 
+		5 3 "pit_droid_01RN" "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:left_toe_1|pit_droid_01:left_toe_Shape1.worldMesh" 
 		"pit_droid_01RN.placeHolderList[25]" ""
-		5 3 "pit_droid_01RN" "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:hips_2|pit_droid_01:hips_Shape2.worldMesh" 
+		5 3 "pit_droid_01RN" "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:hips_1|pit_droid_01:hips_Shape1.worldMesh" 
 		"pit_droid_01RN.placeHolderList[26]" ""
-		5 3 "pit_droid_01RN" "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:left_upper_leg|pit_droid_01:left_upper_legShape.worldMesh" 
+		5 3 "pit_droid_01RN" "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:hips_2|pit_droid_01:hips_Shape2.worldMesh" 
 		"pit_droid_01RN.placeHolderList[27]" ""
-		5 3 "pit_droid_01RN" "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:right_foor|pit_droid_01:right_foorShape.worldMesh" 
+		5 3 "pit_droid_01RN" "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:left_upper_leg|pit_droid_01:left_upper_legShape.worldMesh" 
 		"pit_droid_01RN.placeHolderList[28]" ""
-		5 3 "pit_droid_01RN" "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:right_toe_1|pit_droid_01:right_toe_Shape1.worldMesh" 
+		5 3 "pit_droid_01RN" "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:right_foor|pit_droid_01:right_foorShape.worldMesh" 
 		"pit_droid_01RN.placeHolderList[29]" ""
-		5 3 "pit_droid_01RN" "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:right_toe_2|pit_droid_01:right_toe_Shape2.worldMesh" 
+		5 3 "pit_droid_01RN" "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:right_toe_1|pit_droid_01:right_toe_Shape1.worldMesh" 
 		"pit_droid_01RN.placeHolderList[30]" ""
-		5 3 "pit_droid_01RN" "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:right_lower_leg|pit_droid_01:right_lower_legShape.worldMesh" 
+		5 3 "pit_droid_01RN" "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:right_toe_2|pit_droid_01:right_toe_Shape2.worldMesh" 
 		"pit_droid_01RN.placeHolderList[31]" ""
-		5 3 "pit_droid_01RN" "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:right_upper_leg|pit_droid_01:right_upper_legShape.worldMesh" 
+		5 3 "pit_droid_01RN" "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:right_lower_leg|pit_droid_01:right_lower_legShape.worldMesh" 
 		"pit_droid_01RN.placeHolderList[32]" ""
-		5 3 "pit_droid_01RN" "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:right_1_finger_2|pit_droid_01:right_1_finger_2Shape.worldMesh" 
+		5 3 "pit_droid_01RN" "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:right_upper_leg|pit_droid_01:right_upper_legShape.worldMesh" 
 		"pit_droid_01RN.placeHolderList[33]" ""
-		5 3 "pit_droid_01RN" "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:right_wrist|pit_droid_01:right_wristShape.worldMesh" 
+		5 3 "pit_droid_01RN" "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:right_1_finger_2|pit_droid_01:right_1_finger_2Shape.worldMesh" 
 		"pit_droid_01RN.placeHolderList[34]" ""
-		5 3 "pit_droid_01RN" "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:left_wrist|pit_droid_01:left_wristShape.worldMesh" 
+		5 3 "pit_droid_01RN" "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:right_wrist|pit_droid_01:right_wristShape.worldMesh" 
 		"pit_droid_01RN.placeHolderList[35]" ""
-		5 3 "pit_droid_01RN" "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:left_1_finger_2|pit_droid_01:left_1_finger_2Shape.worldMesh" 
+		5 3 "pit_droid_01RN" "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:left_wrist|pit_droid_01:left_wristShape.worldMesh" 
 		"pit_droid_01RN.placeHolderList[36]" ""
-		5 3 "pit_droid_01RN" "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:body_main|pit_droid_01:body_mainShape.worldMesh" 
+		5 3 "pit_droid_01RN" "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:left_1_finger_2|pit_droid_01:left_1_finger_2Shape.worldMesh" 
 		"pit_droid_01RN.placeHolderList[37]" ""
-		5 4 "pit_droid_01RN" "pit_droid_01:Head_mia_matierial_SG.dagSetMembers" 
+		5 3 "pit_droid_01RN" "|pit_droid_01:pit_droid_mesh_grp|pit_droid_01:body_main|pit_droid_01:body_mainShape.worldMesh" 
 		"pit_droid_01RN.placeHolderList[38]" ""
 		5 4 "pit_droid_01RN" "pit_droid_01:Head_mia_matierial_SG.dagSetMembers" 
 		"pit_droid_01RN.placeHolderList[39]" ""
@@ -2853,25 +2899,25 @@ createNode reference -n "pit_droid_01RN";
 		"pit_droid_01RN.placeHolderList[42]" ""
 		5 4 "pit_droid_01RN" "pit_droid_01:Head_mia_matierial_SG.dagSetMembers" 
 		"pit_droid_01RN.placeHolderList[43]" ""
-		5 3 "pit_droid_01RN" "pit_droid_01:main_body_mia_material_SG.memberWireframeColor" 
+		5 4 "pit_droid_01RN" "pit_droid_01:Head_mia_matierial_SG.dagSetMembers" 
 		"pit_droid_01RN.placeHolderList[44]" ""
 		5 3 "pit_droid_01RN" "pit_droid_01:main_body_mia_material_SG.memberWireframeColor" 
 		"pit_droid_01RN.placeHolderList[45]" ""
 		5 3 "pit_droid_01RN" "pit_droid_01:main_body_mia_material_SG.memberWireframeColor" 
 		"pit_droid_01RN.placeHolderList[46]" ""
-		5 4 "pit_droid_01RN" "pit_droid_01:main_body_mia_material_SG.dagSetMembers" 
+		5 3 "pit_droid_01RN" "pit_droid_01:main_body_mia_material_SG.memberWireframeColor" 
 		"pit_droid_01RN.placeHolderList[47]" ""
 		5 4 "pit_droid_01RN" "pit_droid_01:main_body_mia_material_SG.dagSetMembers" 
 		"pit_droid_01RN.placeHolderList[48]" ""
 		5 4 "pit_droid_01RN" "pit_droid_01:main_body_mia_material_SG.dagSetMembers" 
 		"pit_droid_01RN.placeHolderList[49]" ""
-		5 4 "pit_droid_01RN" "pit_droid_01:main_body_mia_material_SG.groupNodes" 
+		5 4 "pit_droid_01RN" "pit_droid_01:main_body_mia_material_SG.dagSetMembers" 
 		"pit_droid_01RN.placeHolderList[50]" ""
 		5 4 "pit_droid_01RN" "pit_droid_01:main_body_mia_material_SG.groupNodes" 
 		"pit_droid_01RN.placeHolderList[51]" ""
 		5 4 "pit_droid_01RN" "pit_droid_01:main_body_mia_material_SG.groupNodes" 
 		"pit_droid_01RN.placeHolderList[52]" ""
-		5 3 "pit_droid_01RN" "pit_droid_01:arms_pit_droid_SG.memberWireframeColor" 
+		5 4 "pit_droid_01RN" "pit_droid_01:main_body_mia_material_SG.groupNodes" 
 		"pit_droid_01RN.placeHolderList[53]" ""
 		5 3 "pit_droid_01RN" "pit_droid_01:arms_pit_droid_SG.memberWireframeColor" 
 		"pit_droid_01RN.placeHolderList[54]" ""
@@ -2907,7 +2953,7 @@ createNode reference -n "pit_droid_01RN";
 		"pit_droid_01RN.placeHolderList[69]" ""
 		5 3 "pit_droid_01RN" "pit_droid_01:arms_pit_droid_SG.memberWireframeColor" 
 		"pit_droid_01RN.placeHolderList[70]" ""
-		5 4 "pit_droid_01RN" "pit_droid_01:arms_pit_droid_SG.dagSetMembers" 
+		5 3 "pit_droid_01RN" "pit_droid_01:arms_pit_droid_SG.memberWireframeColor" 
 		"pit_droid_01RN.placeHolderList[71]" ""
 		5 4 "pit_droid_01RN" "pit_droid_01:arms_pit_droid_SG.dagSetMembers" 
 		"pit_droid_01RN.placeHolderList[72]" ""
@@ -2943,8 +2989,8 @@ createNode reference -n "pit_droid_01RN";
 		"pit_droid_01RN.placeHolderList[87]" ""
 		5 4 "pit_droid_01RN" "pit_droid_01:arms_pit_droid_SG.dagSetMembers" 
 		"pit_droid_01RN.placeHolderList[88]" ""
-		5 4 "pit_droid_01RN" "pit_droid_01:arms_pit_droid_SG.groupNodes" "pit_droid_01RN.placeHolderList[89]" 
-		""
+		5 4 "pit_droid_01RN" "pit_droid_01:arms_pit_droid_SG.dagSetMembers" 
+		"pit_droid_01RN.placeHolderList[89]" ""
 		5 4 "pit_droid_01RN" "pit_droid_01:arms_pit_droid_SG.groupNodes" "pit_droid_01RN.placeHolderList[90]" 
 		""
 		5 4 "pit_droid_01RN" "pit_droid_01:arms_pit_droid_SG.groupNodes" "pit_droid_01RN.placeHolderList[91]" 
@@ -2979,8 +3025,8 @@ createNode reference -n "pit_droid_01RN";
 		""
 		5 4 "pit_droid_01RN" "pit_droid_01:arms_pit_droid_SG.groupNodes" "pit_droid_01RN.placeHolderList[106]" 
 		""
-		5 3 "pit_droid_01RN" "pit_droid_01:leg_pit_droid_mia_material_SG.memberWireframeColor" 
-		"pit_droid_01RN.placeHolderList[107]" ""
+		5 4 "pit_droid_01RN" "pit_droid_01:arms_pit_droid_SG.groupNodes" "pit_droid_01RN.placeHolderList[107]" 
+		""
 		5 3 "pit_droid_01RN" "pit_droid_01:leg_pit_droid_mia_material_SG.memberWireframeColor" 
 		"pit_droid_01RN.placeHolderList[108]" ""
 		5 3 "pit_droid_01RN" "pit_droid_01:leg_pit_droid_mia_material_SG.memberWireframeColor" 
@@ -2999,7 +3045,7 @@ createNode reference -n "pit_droid_01RN";
 		"pit_droid_01RN.placeHolderList[115]" ""
 		5 3 "pit_droid_01RN" "pit_droid_01:leg_pit_droid_mia_material_SG.memberWireframeColor" 
 		"pit_droid_01RN.placeHolderList[116]" ""
-		5 4 "pit_droid_01RN" "pit_droid_01:leg_pit_droid_mia_material_SG.dagSetMembers" 
+		5 3 "pit_droid_01RN" "pit_droid_01:leg_pit_droid_mia_material_SG.memberWireframeColor" 
 		"pit_droid_01RN.placeHolderList[117]" ""
 		5 4 "pit_droid_01RN" "pit_droid_01:leg_pit_droid_mia_material_SG.dagSetMembers" 
 		"pit_droid_01RN.placeHolderList[118]" ""
@@ -3019,7 +3065,7 @@ createNode reference -n "pit_droid_01RN";
 		"pit_droid_01RN.placeHolderList[125]" ""
 		5 4 "pit_droid_01RN" "pit_droid_01:leg_pit_droid_mia_material_SG.dagSetMembers" 
 		"pit_droid_01RN.placeHolderList[126]" ""
-		5 4 "pit_droid_01RN" "pit_droid_01:leg_pit_droid_mia_material_SG.groupNodes" 
+		5 4 "pit_droid_01RN" "pit_droid_01:leg_pit_droid_mia_material_SG.dagSetMembers" 
 		"pit_droid_01RN.placeHolderList[127]" ""
 		5 4 "pit_droid_01RN" "pit_droid_01:leg_pit_droid_mia_material_SG.groupNodes" 
 		"pit_droid_01RN.placeHolderList[128]" ""
@@ -3038,7 +3084,9 @@ createNode reference -n "pit_droid_01RN";
 		5 4 "pit_droid_01RN" "pit_droid_01:leg_pit_droid_mia_material_SG.groupNodes" 
 		"pit_droid_01RN.placeHolderList[135]" ""
 		5 4 "pit_droid_01RN" "pit_droid_01:leg_pit_droid_mia_material_SG.groupNodes" 
-		"pit_droid_01RN.placeHolderList[136]" "";
+		"pit_droid_01RN.placeHolderList[136]" ""
+		5 4 "pit_droid_01RN" "pit_droid_01:leg_pit_droid_mia_material_SG.groupNodes" 
+		"pit_droid_01RN.placeHolderList[137]" "";
 	setAttr ".ptag" -type "string" "";
 lockNode -l 1 ;
 createNode mentalrayItemsList -s -n "mentalrayItemsList";
@@ -3331,10 +3379,10 @@ createNode script -n "uiConfigurationScriptNode";
 		+ "            -clipGhosts 1\n            -greasePencils 1\n            -shadows 0\n            -captureSequenceNumber -1\n            -width 1\n            -height 1\n            -sceneRenderFilter 0\n            $editorName;\n        modelEditor -e -viewSelected 0 $editorName;\n        modelEditor -e \n            -pluginObjects \"gpuCacheDisplayFilter\" 1 \n            $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"modelPanel\" (localizedPanelLabel(\"Persp View\")) `;\n\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `modelPanel -unParent -l (localizedPanelLabel(\"Persp View\")) -mbv $menusOkayInPanels `;\n\t\t\t$editorName = $panelName;\n            modelEditor -e \n                -camera \"persp\" \n                -useInteractiveMode 0\n                -displayLights \"default\" \n                -displayAppearance \"smoothShaded\" \n                -activeOnly 0\n                -ignorePanZoom 0\n                -wireframeOnShaded 0\n                -headsUpDisplay 1\n"
 		+ "                -holdOuts 1\n                -selectionHiliteDisplay 1\n                -useDefaultMaterial 0\n                -bufferMode \"double\" \n                -twoSidedLighting 0\n                -backfaceCulling 0\n                -xray 0\n                -jointXray 1\n                -activeComponentsXray 0\n                -displayTextures 1\n                -smoothWireframe 0\n                -lineWidth 1\n                -textureAnisotropic 0\n                -textureHilight 1\n                -textureSampling 2\n                -textureDisplay \"modulate\" \n                -textureMaxSize 16384\n                -fogging 0\n                -fogSource \"fragment\" \n                -fogMode \"linear\" \n                -fogStart 0\n                -fogEnd 100\n                -fogDensity 0.1\n                -fogColor 0.5 0.5 0.5 1 \n                -depthOfFieldPreview 1\n                -maxConstantTransparency 1\n                -rendererName \"vp2Renderer\" \n                -objectFilterShowInHUD 1\n                -isFiltered 0\n"
 		+ "                -colorResolution 256 256 \n                -bumpResolution 512 512 \n                -textureCompression 0\n                -transparencyAlgorithm \"frontAndBackCull\" \n                -transpInShadows 0\n                -cullingOverride \"none\" \n                -lowQualityLighting 0\n                -maximumNumHardwareLights 1\n                -occlusionCulling 0\n                -shadingModel 0\n                -useBaseRenderer 0\n                -useReducedRenderer 0\n                -smallObjectCulling 0\n                -smallObjectThreshold -1 \n                -interactiveDisableShadows 0\n                -interactiveBackFaceCull 0\n                -sortTransparent 1\n                -nurbsCurves 1\n                -nurbsSurfaces 1\n                -polymeshes 1\n                -subdivSurfaces 1\n                -planes 1\n                -lights 1\n                -cameras 1\n                -controlVertices 1\n                -hulls 1\n                -grid 1\n                -imagePlane 1\n                -joints 0\n"
-		+ "                -ikHandles 0\n                -deformers 1\n                -dynamics 1\n                -particleInstancers 1\n                -fluids 1\n                -hairSystems 1\n                -follicles 1\n                -nCloths 1\n                -nParticles 1\n                -nRigids 1\n                -dynamicConstraints 1\n                -locators 1\n                -manipulators 1\n                -pluginShapes 1\n                -dimensions 1\n                -handles 1\n                -pivots 1\n                -textures 1\n                -strokes 1\n                -motionTrails 1\n                -clipGhosts 1\n                -greasePencils 1\n                -shadows 0\n                -captureSequenceNumber -1\n                -width 1384\n                -height 731\n                -sceneRenderFilter 0\n                $editorName;\n            modelEditor -e -viewSelected 0 $editorName;\n            modelEditor -e \n                -pluginObjects \"gpuCacheDisplayFilter\" 1 \n                $editorName;\n\t\t}\n\t} else {\n"
+		+ "                -ikHandles 0\n                -deformers 1\n                -dynamics 1\n                -particleInstancers 1\n                -fluids 1\n                -hairSystems 1\n                -follicles 1\n                -nCloths 1\n                -nParticles 1\n                -nRigids 1\n                -dynamicConstraints 1\n                -locators 1\n                -manipulators 1\n                -pluginShapes 1\n                -dimensions 1\n                -handles 1\n                -pivots 1\n                -textures 1\n                -strokes 1\n                -motionTrails 1\n                -clipGhosts 1\n                -greasePencils 1\n                -shadows 0\n                -captureSequenceNumber -1\n                -width 1387\n                -height 731\n                -sceneRenderFilter 0\n                $editorName;\n            modelEditor -e -viewSelected 0 $editorName;\n            modelEditor -e \n                -pluginObjects \"gpuCacheDisplayFilter\" 1 \n                $editorName;\n\t\t}\n\t} else {\n"
 		+ "\t\t$label = `panel -q -label $panelName`;\n\t\tmodelPanel -edit -l (localizedPanelLabel(\"Persp View\")) -mbv $menusOkayInPanels  $panelName;\n\t\t$editorName = $panelName;\n        modelEditor -e \n            -camera \"persp\" \n            -useInteractiveMode 0\n            -displayLights \"default\" \n            -displayAppearance \"smoothShaded\" \n            -activeOnly 0\n            -ignorePanZoom 0\n            -wireframeOnShaded 0\n            -headsUpDisplay 1\n            -holdOuts 1\n            -selectionHiliteDisplay 1\n            -useDefaultMaterial 0\n            -bufferMode \"double\" \n            -twoSidedLighting 0\n            -backfaceCulling 0\n            -xray 0\n            -jointXray 1\n            -activeComponentsXray 0\n            -displayTextures 1\n            -smoothWireframe 0\n            -lineWidth 1\n            -textureAnisotropic 0\n            -textureHilight 1\n            -textureSampling 2\n            -textureDisplay \"modulate\" \n            -textureMaxSize 16384\n            -fogging 0\n            -fogSource \"fragment\" \n"
 		+ "            -fogMode \"linear\" \n            -fogStart 0\n            -fogEnd 100\n            -fogDensity 0.1\n            -fogColor 0.5 0.5 0.5 1 \n            -depthOfFieldPreview 1\n            -maxConstantTransparency 1\n            -rendererName \"vp2Renderer\" \n            -objectFilterShowInHUD 1\n            -isFiltered 0\n            -colorResolution 256 256 \n            -bumpResolution 512 512 \n            -textureCompression 0\n            -transparencyAlgorithm \"frontAndBackCull\" \n            -transpInShadows 0\n            -cullingOverride \"none\" \n            -lowQualityLighting 0\n            -maximumNumHardwareLights 1\n            -occlusionCulling 0\n            -shadingModel 0\n            -useBaseRenderer 0\n            -useReducedRenderer 0\n            -smallObjectCulling 0\n            -smallObjectThreshold -1 \n            -interactiveDisableShadows 0\n            -interactiveBackFaceCull 0\n            -sortTransparent 1\n            -nurbsCurves 1\n            -nurbsSurfaces 1\n            -polymeshes 1\n            -subdivSurfaces 1\n"
-		+ "            -planes 1\n            -lights 1\n            -cameras 1\n            -controlVertices 1\n            -hulls 1\n            -grid 1\n            -imagePlane 1\n            -joints 0\n            -ikHandles 0\n            -deformers 1\n            -dynamics 1\n            -particleInstancers 1\n            -fluids 1\n            -hairSystems 1\n            -follicles 1\n            -nCloths 1\n            -nParticles 1\n            -nRigids 1\n            -dynamicConstraints 1\n            -locators 1\n            -manipulators 1\n            -pluginShapes 1\n            -dimensions 1\n            -handles 1\n            -pivots 1\n            -textures 1\n            -strokes 1\n            -motionTrails 1\n            -clipGhosts 1\n            -greasePencils 1\n            -shadows 0\n            -captureSequenceNumber -1\n            -width 1384\n            -height 731\n            -sceneRenderFilter 0\n            $editorName;\n        modelEditor -e -viewSelected 0 $editorName;\n        modelEditor -e \n            -pluginObjects \"gpuCacheDisplayFilter\" 1 \n"
+		+ "            -planes 1\n            -lights 1\n            -cameras 1\n            -controlVertices 1\n            -hulls 1\n            -grid 1\n            -imagePlane 1\n            -joints 0\n            -ikHandles 0\n            -deformers 1\n            -dynamics 1\n            -particleInstancers 1\n            -fluids 1\n            -hairSystems 1\n            -follicles 1\n            -nCloths 1\n            -nParticles 1\n            -nRigids 1\n            -dynamicConstraints 1\n            -locators 1\n            -manipulators 1\n            -pluginShapes 1\n            -dimensions 1\n            -handles 1\n            -pivots 1\n            -textures 1\n            -strokes 1\n            -motionTrails 1\n            -clipGhosts 1\n            -greasePencils 1\n            -shadows 0\n            -captureSequenceNumber -1\n            -width 1387\n            -height 731\n            -sceneRenderFilter 0\n            $editorName;\n        modelEditor -e -viewSelected 0 $editorName;\n        modelEditor -e \n            -pluginObjects \"gpuCacheDisplayFilter\" 1 \n"
 		+ "            $editorName;\n\t\tif (!$useSceneConfig) {\n\t\t\tpanel -e -l $label $panelName;\n\t\t}\n\t}\n\n\n\t$panelName = `sceneUIReplacement -getNextPanel \"outlinerPanel\" (localizedPanelLabel(\"Outliner\")) `;\n\tif (\"\" == $panelName) {\n\t\tif ($useSceneConfig) {\n\t\t\t$panelName = `outlinerPanel -unParent -l (localizedPanelLabel(\"Outliner\")) -mbv $menusOkayInPanels `;\n\t\t\t$editorName = $panelName;\n            outlinerEditor -e \n                -docTag \"isolOutln_fromSeln\" \n                -showShapes 0\n                -showReferenceNodes 1\n                -showReferenceMembers 1\n                -showAttributes 0\n                -showConnected 0\n                -showAnimCurvesOnly 0\n                -showMuteInfo 0\n                -organizeByLayer 1\n                -showAnimLayerWeight 1\n                -autoExpandLayers 1\n                -autoExpand 0\n                -showDagOnly 1\n                -showAssets 1\n                -showContainedOnly 1\n                -showPublishedAsConnected 0\n                -showContainerContents 1\n                -ignoreDagHierarchy 0\n"
 		+ "                -expandConnections 0\n                -showUpstreamCurves 1\n                -showUnitlessCurves 1\n                -showCompounds 1\n                -showLeafs 1\n                -showNumericAttrsOnly 0\n                -highlightActive 1\n                -autoSelectNewObjects 0\n                -doNotSelectNewObjects 0\n                -dropIsParent 1\n                -transmitFilters 0\n                -setFilter \"defaultSetFilter\" \n                -showSetMembers 1\n                -allowMultiSelection 1\n                -alwaysToggleSelect 0\n                -directSelect 0\n                -displayMode \"DAG\" \n                -expandObjects 0\n                -setsIgnoreFilters 1\n                -containersIgnoreFilters 0\n                -editAttrName 0\n                -showAttrValues 0\n                -highlightSecondary 0\n                -showUVAttrsOnly 0\n                -showTextureNodesOnly 0\n                -attrAlphaOrder \"default\" \n                -animLayerFilterOptions \"allAffecting\" \n                -sortOrder \"none\" \n"
 		+ "                -longNames 0\n                -niceNames 1\n                -showNamespace 1\n                -showPinIcons 0\n                -mapMotionTrails 0\n                -ignoreHiddenAttribute 0\n                -ignoreOutlinerColor 0\n                $editorName;\n\t\t}\n\t} else {\n\t\t$label = `panel -q -label $panelName`;\n\t\toutlinerPanel -edit -l (localizedPanelLabel(\"Outliner\")) -mbv $menusOkayInPanels  $panelName;\n\t\t$editorName = $panelName;\n        outlinerEditor -e \n            -docTag \"isolOutln_fromSeln\" \n            -showShapes 0\n            -showReferenceNodes 1\n            -showReferenceMembers 1\n            -showAttributes 0\n            -showConnected 0\n            -showAnimCurvesOnly 0\n            -showMuteInfo 0\n            -organizeByLayer 1\n            -showAnimLayerWeight 1\n            -autoExpandLayers 1\n            -autoExpand 0\n            -showDagOnly 1\n            -showAssets 1\n            -showContainedOnly 1\n            -showPublishedAsConnected 0\n            -showContainerContents 1\n            -ignoreDagHierarchy 0\n"
@@ -3376,8 +3424,8 @@ createNode script -n "uiConfigurationScriptNode";
 		+ "\t\t\t\t\t\"$panelName = `outlinerPanel -unParent -l (localizedPanelLabel(\\\"Outliner\\\")) -mbv $menusOkayInPanels `;\\n$editorName = $panelName;\\noutlinerEditor -e \\n    -docTag \\\"isolOutln_fromSeln\\\" \\n    -showShapes 0\\n    -showReferenceNodes 1\\n    -showReferenceMembers 1\\n    -showAttributes 0\\n    -showConnected 0\\n    -showAnimCurvesOnly 0\\n    -showMuteInfo 0\\n    -organizeByLayer 1\\n    -showAnimLayerWeight 1\\n    -autoExpandLayers 1\\n    -autoExpand 0\\n    -showDagOnly 1\\n    -showAssets 1\\n    -showContainedOnly 1\\n    -showPublishedAsConnected 0\\n    -showContainerContents 1\\n    -ignoreDagHierarchy 0\\n    -expandConnections 0\\n    -showUpstreamCurves 1\\n    -showUnitlessCurves 1\\n    -showCompounds 1\\n    -showLeafs 1\\n    -showNumericAttrsOnly 0\\n    -highlightActive 1\\n    -autoSelectNewObjects 0\\n    -doNotSelectNewObjects 0\\n    -dropIsParent 1\\n    -transmitFilters 0\\n    -setFilter \\\"defaultSetFilter\\\" \\n    -showSetMembers 1\\n    -allowMultiSelection 1\\n    -alwaysToggleSelect 0\\n    -directSelect 0\\n    -displayMode \\\"DAG\\\" \\n    -expandObjects 0\\n    -setsIgnoreFilters 1\\n    -containersIgnoreFilters 0\\n    -editAttrName 0\\n    -showAttrValues 0\\n    -highlightSecondary 0\\n    -showUVAttrsOnly 0\\n    -showTextureNodesOnly 0\\n    -attrAlphaOrder \\\"default\\\" \\n    -animLayerFilterOptions \\\"allAffecting\\\" \\n    -sortOrder \\\"none\\\" \\n    -longNames 0\\n    -niceNames 1\\n    -showNamespace 1\\n    -showPinIcons 0\\n    -mapMotionTrails 0\\n    -ignoreHiddenAttribute 0\\n    -ignoreOutlinerColor 0\\n    $editorName\"\n"
 		+ "\t\t\t\t\t\"outlinerPanel -edit -l (localizedPanelLabel(\\\"Outliner\\\")) -mbv $menusOkayInPanels  $panelName;\\n$editorName = $panelName;\\noutlinerEditor -e \\n    -docTag \\\"isolOutln_fromSeln\\\" \\n    -showShapes 0\\n    -showReferenceNodes 1\\n    -showReferenceMembers 1\\n    -showAttributes 0\\n    -showConnected 0\\n    -showAnimCurvesOnly 0\\n    -showMuteInfo 0\\n    -organizeByLayer 1\\n    -showAnimLayerWeight 1\\n    -autoExpandLayers 1\\n    -autoExpand 0\\n    -showDagOnly 1\\n    -showAssets 1\\n    -showContainedOnly 1\\n    -showPublishedAsConnected 0\\n    -showContainerContents 1\\n    -ignoreDagHierarchy 0\\n    -expandConnections 0\\n    -showUpstreamCurves 1\\n    -showUnitlessCurves 1\\n    -showCompounds 1\\n    -showLeafs 1\\n    -showNumericAttrsOnly 0\\n    -highlightActive 1\\n    -autoSelectNewObjects 0\\n    -doNotSelectNewObjects 0\\n    -dropIsParent 1\\n    -transmitFilters 0\\n    -setFilter \\\"defaultSetFilter\\\" \\n    -showSetMembers 1\\n    -allowMultiSelection 1\\n    -alwaysToggleSelect 0\\n    -directSelect 0\\n    -displayMode \\\"DAG\\\" \\n    -expandObjects 0\\n    -setsIgnoreFilters 1\\n    -containersIgnoreFilters 0\\n    -editAttrName 0\\n    -showAttrValues 0\\n    -highlightSecondary 0\\n    -showUVAttrsOnly 0\\n    -showTextureNodesOnly 0\\n    -attrAlphaOrder \\\"default\\\" \\n    -animLayerFilterOptions \\\"allAffecting\\\" \\n    -sortOrder \\\"none\\\" \\n    -longNames 0\\n    -niceNames 1\\n    -showNamespace 1\\n    -showPinIcons 0\\n    -mapMotionTrails 0\\n    -ignoreHiddenAttribute 0\\n    -ignoreOutlinerColor 0\\n    $editorName\"\n"
 		+ "\t\t\t\t-ap false\n\t\t\t\t\t(localizedPanelLabel(\"Persp View\")) \n\t\t\t\t\t\"modelPanel\"\n"
-		+ "\t\t\t\t\t\"$panelName = `modelPanel -unParent -l (localizedPanelLabel(\\\"Persp View\\\")) -mbv $menusOkayInPanels `;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -cam `findStartUpCamera persp` \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 0\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 0\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 0\\n    -backfaceCulling 0\\n    -xray 0\\n    -jointXray 1\\n    -activeComponentsXray 0\\n    -displayTextures 1\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 16384\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"vp2Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -nurbsCurves 1\\n    -nurbsSurfaces 1\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 1\\n    -cameras 1\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 1\\n    -imagePlane 1\\n    -joints 0\\n    -ikHandles 0\\n    -deformers 1\\n    -dynamics 1\\n    -particleInstancers 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -greasePencils 1\\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 1384\\n    -height 731\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName;\\nmodelEditor -e \\n    -pluginObjects \\\"gpuCacheDisplayFilter\\\" 1 \\n    $editorName\"\n"
-		+ "\t\t\t\t\t\"modelPanel -edit -l (localizedPanelLabel(\\\"Persp View\\\")) -mbv $menusOkayInPanels  $panelName;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -cam `findStartUpCamera persp` \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 0\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 0\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 0\\n    -backfaceCulling 0\\n    -xray 0\\n    -jointXray 1\\n    -activeComponentsXray 0\\n    -displayTextures 1\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 16384\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"vp2Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -nurbsCurves 1\\n    -nurbsSurfaces 1\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 1\\n    -cameras 1\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 1\\n    -imagePlane 1\\n    -joints 0\\n    -ikHandles 0\\n    -deformers 1\\n    -dynamics 1\\n    -particleInstancers 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -greasePencils 1\\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 1384\\n    -height 731\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName;\\nmodelEditor -e \\n    -pluginObjects \\\"gpuCacheDisplayFilter\\\" 1 \\n    $editorName\"\n"
+		+ "\t\t\t\t\t\"$panelName = `modelPanel -unParent -l (localizedPanelLabel(\\\"Persp View\\\")) -mbv $menusOkayInPanels `;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -cam `findStartUpCamera persp` \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 0\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 0\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 0\\n    -backfaceCulling 0\\n    -xray 0\\n    -jointXray 1\\n    -activeComponentsXray 0\\n    -displayTextures 1\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 16384\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"vp2Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -nurbsCurves 1\\n    -nurbsSurfaces 1\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 1\\n    -cameras 1\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 1\\n    -imagePlane 1\\n    -joints 0\\n    -ikHandles 0\\n    -deformers 1\\n    -dynamics 1\\n    -particleInstancers 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -greasePencils 1\\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 1387\\n    -height 731\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName;\\nmodelEditor -e \\n    -pluginObjects \\\"gpuCacheDisplayFilter\\\" 1 \\n    $editorName\"\n"
+		+ "\t\t\t\t\t\"modelPanel -edit -l (localizedPanelLabel(\\\"Persp View\\\")) -mbv $menusOkayInPanels  $panelName;\\n$editorName = $panelName;\\nmodelEditor -e \\n    -cam `findStartUpCamera persp` \\n    -useInteractiveMode 0\\n    -displayLights \\\"default\\\" \\n    -displayAppearance \\\"smoothShaded\\\" \\n    -activeOnly 0\\n    -ignorePanZoom 0\\n    -wireframeOnShaded 0\\n    -headsUpDisplay 1\\n    -holdOuts 1\\n    -selectionHiliteDisplay 1\\n    -useDefaultMaterial 0\\n    -bufferMode \\\"double\\\" \\n    -twoSidedLighting 0\\n    -backfaceCulling 0\\n    -xray 0\\n    -jointXray 1\\n    -activeComponentsXray 0\\n    -displayTextures 1\\n    -smoothWireframe 0\\n    -lineWidth 1\\n    -textureAnisotropic 0\\n    -textureHilight 1\\n    -textureSampling 2\\n    -textureDisplay \\\"modulate\\\" \\n    -textureMaxSize 16384\\n    -fogging 0\\n    -fogSource \\\"fragment\\\" \\n    -fogMode \\\"linear\\\" \\n    -fogStart 0\\n    -fogEnd 100\\n    -fogDensity 0.1\\n    -fogColor 0.5 0.5 0.5 1 \\n    -depthOfFieldPreview 1\\n    -maxConstantTransparency 1\\n    -rendererName \\\"vp2Renderer\\\" \\n    -objectFilterShowInHUD 1\\n    -isFiltered 0\\n    -colorResolution 256 256 \\n    -bumpResolution 512 512 \\n    -textureCompression 0\\n    -transparencyAlgorithm \\\"frontAndBackCull\\\" \\n    -transpInShadows 0\\n    -cullingOverride \\\"none\\\" \\n    -lowQualityLighting 0\\n    -maximumNumHardwareLights 1\\n    -occlusionCulling 0\\n    -shadingModel 0\\n    -useBaseRenderer 0\\n    -useReducedRenderer 0\\n    -smallObjectCulling 0\\n    -smallObjectThreshold -1 \\n    -interactiveDisableShadows 0\\n    -interactiveBackFaceCull 0\\n    -sortTransparent 1\\n    -nurbsCurves 1\\n    -nurbsSurfaces 1\\n    -polymeshes 1\\n    -subdivSurfaces 1\\n    -planes 1\\n    -lights 1\\n    -cameras 1\\n    -controlVertices 1\\n    -hulls 1\\n    -grid 1\\n    -imagePlane 1\\n    -joints 0\\n    -ikHandles 0\\n    -deformers 1\\n    -dynamics 1\\n    -particleInstancers 1\\n    -fluids 1\\n    -hairSystems 1\\n    -follicles 1\\n    -nCloths 1\\n    -nParticles 1\\n    -nRigids 1\\n    -dynamicConstraints 1\\n    -locators 1\\n    -manipulators 1\\n    -pluginShapes 1\\n    -dimensions 1\\n    -handles 1\\n    -pivots 1\\n    -textures 1\\n    -strokes 1\\n    -motionTrails 1\\n    -clipGhosts 1\\n    -greasePencils 1\\n    -shadows 0\\n    -captureSequenceNumber -1\\n    -width 1387\\n    -height 731\\n    -sceneRenderFilter 0\\n    $editorName;\\nmodelEditor -e -viewSelected 0 $editorName;\\nmodelEditor -e \\n    -pluginObjects \\\"gpuCacheDisplayFilter\\\" 1 \\n    $editorName\"\n"
 		+ "\t\t\t\t$configName;\n\n            setNamedPanelLayout (localizedPanelLabel(\"Current Layout\"));\n        }\n\n        panelHistory -e -clear mainPanelHistory;\n        setFocus `paneLayout -q -p1 $gMainPane`;\n        sceneUIReplacement -deleteRemaining;\n        sceneUIReplacement -clear;\n\t}\n\n\ngrid -spacing 5 -size 12 -divisions 5 -displayAxes yes -displayGridLines yes -displayDivisionLines yes -displayPerspectiveLabels no -displayOrthographicLabels no -displayAxesBold yes -perspectiveLabelPosition axis -orthographicLabelPosition edge;\nviewManip -drawCompass 0 -compassAngle 0 -frontParameters \"\" -homeParameters \"\" -selectionLockParameters \"\";\n}\n");
 	setAttr ".st" 3;
 createNode script -n "sceneConfigurationScriptNode";
@@ -17370,6 +17418,11 @@ createNode groupParts -n "groupParts105";
 	rename -uid "0CA447D8-4867-3B63-F340-4D8FDFD8EB46";
 	setAttr ".ihi" 0;
 	setAttr ".ic" -type "componentList" 1 "f[0:219]";
+createNode displayLayer -n "pit_droid_rig_mesh";
+	rename -uid "9FC1680F-40EB-894B-6056-71ABB0B8F2A5";
+	setAttr ".dt" 2;
+	setAttr ".c" 6;
+	setAttr ".do" 1;
 select -ne :time1;
 	setAttr ".o" 1;
 	setAttr ".unw" 1;
@@ -17380,17 +17433,16 @@ select -ne :hardwareRenderingGlobals;
 		 0 0 0 0 ;
 	setAttr ".fprt" yes;
 select -ne :renderPartition;
-	setAttr -s 6 ".st";
+	setAttr -s 8 ".st";
 select -ne :renderGlobalsList1;
 select -ne :defaultShaderList1;
-	setAttr -s 8 ".s";
+	setAttr -s 10 ".s";
 select -ne :postProcessList1;
 	setAttr -s 2 ".p";
 select -ne :defaultRenderUtilityList1;
 	setAttr -s 20 ".u";
 select -ne :defaultRenderingList1;
 	setAttr -s 2 ".r";
-select -ne :lightList1;
 select -ne :defaultTextureList1;
 	setAttr -s 14 ".tx";
 select -ne :initialShadingGroup;
@@ -17401,7 +17453,6 @@ select -ne :defaultRenderGlobals;
 	setAttr ".ren" -type "string" "mentalRay";
 select -ne :defaultResolution;
 	setAttr ".pa" 1;
-select -ne :defaultLightSet;
 select -ne :hardwareRenderGlobals;
 	setAttr ".ctrs" 256;
 	setAttr ".btrs" 512;
@@ -17411,162 +17462,163 @@ select -ne :hyperGraphLayout;
 	setAttr ".hyp[12].isc" yes;
 	setAttr ".hyp[14].isc" yes;
 	setAttr ".hyp[15].isc" yes;
-connectAttr "pit_droid_01RN.phl[1]" "groupParts2.ig";
-connectAttr "pit_droid_01RN.phl[2]" "groupParts4.ig";
-connectAttr "pit_droid_01RN.phl[3]" "groupParts6.ig";
-connectAttr "pit_droid_01RN.phl[4]" "groupParts8.ig";
-connectAttr "pit_droid_01RN.phl[5]" "groupParts10.ig";
-connectAttr "pit_droid_01RN.phl[6]" "groupParts12.ig";
-connectAttr "pit_droid_01RN.phl[7]" "groupParts20.ig";
-connectAttr "pit_droid_01RN.phl[8]" "groupParts47.ig";
-connectAttr "pit_droid_01RN.phl[9]" "groupParts44.ig";
-connectAttr "pit_droid_01RN.phl[10]" "groupParts41.ig";
-connectAttr "pit_droid_01RN.phl[11]" "groupParts38.ig";
-connectAttr "pit_droid_01RN.phl[12]" "groupParts35.ig";
-connectAttr "pit_droid_01RN.phl[13]" "groupParts29.ig";
-connectAttr "pit_droid_01RN.phl[14]" "groupParts23.ig";
-connectAttr "pit_droid_01RN.phl[15]" "groupParts65.ig";
-connectAttr "pit_droid_01RN.phl[16]" "groupParts83.ig";
-connectAttr "pit_droid_01RN.phl[17]" "groupParts80.ig";
-connectAttr "pit_droid_01RN.phl[18]" "groupParts77.ig";
-connectAttr "pit_droid_01RN.phl[19]" "groupParts71.ig";
-connectAttr "pit_droid_01RN.phl[20]" "groupParts74.ig";
-connectAttr "pit_droid_01RN.phl[21]" "groupParts56.ig";
-connectAttr "pit_droid_01RN.phl[22]" "groupParts98.ig";
-connectAttr "pit_droid_01RN.phl[23]" "groupParts101.ig";
-connectAttr "pit_droid_01RN.phl[24]" "groupParts104.ig";
-connectAttr "pit_droid_01RN.phl[25]" "groupParts14.ig";
-connectAttr "pit_droid_01RN.phl[26]" "groupParts50.ig";
-connectAttr "pit_droid_01RN.phl[27]" "groupParts53.ig";
-connectAttr "pit_droid_01RN.phl[28]" "groupParts89.ig";
-connectAttr "pit_droid_01RN.phl[29]" "groupParts92.ig";
-connectAttr "pit_droid_01RN.phl[30]" "groupParts95.ig";
-connectAttr "pit_droid_01RN.phl[31]" "groupParts62.ig";
-connectAttr "pit_droid_01RN.phl[32]" "groupParts59.ig";
-connectAttr "pit_droid_01RN.phl[33]" "groupParts32.ig";
-connectAttr "pit_droid_01RN.phl[34]" "groupParts26.ig";
-connectAttr "pit_droid_01RN.phl[35]" "groupParts68.ig";
-connectAttr "pit_droid_01RN.phl[36]" "groupParts86.ig";
-connectAttr "pit_droid_01RN.phl[37]" "groupParts17.ig";
-connectAttr "camera_headShapeDeformed.iog" "pit_droid_01RN.phl[38]";
-connectAttr "camera_eyeShapeDeformed.iog" "pit_droid_01RN.phl[39]";
-connectAttr "camera_accesorieShape2Deformed.iog" "pit_droid_01RN.phl[40]";
-connectAttr "camera_accesorie1ShapeDeformed.iog" "pit_droid_01RN.phl[41]";
-connectAttr "camera_accesorieShapeDeformed.iog" "pit_droid_01RN.phl[42]";
-connectAttr "neckShapeDeformed.iog" "pit_droid_01RN.phl[43]";
-connectAttr "pit_droid_01RN.phl[44]" "hips_Shape1Deformed.iog.og[2].gco";
-connectAttr "pit_droid_01RN.phl[45]" "body_mainShapeDeformed.iog.og[2].gco";
-connectAttr "pit_droid_01RN.phl[46]" "hips_Shape2Deformed.iog.og[2].gco";
-connectAttr "hips_Shape1Deformed.iog.og[2]" "pit_droid_01RN.phl[47]";
-connectAttr "body_mainShapeDeformed.iog.og[2]" "pit_droid_01RN.phl[48]";
-connectAttr "hips_Shape2Deformed.iog.og[2]" "pit_droid_01RN.phl[49]";
-connectAttr "groupId15.msg" "pit_droid_01RN.phl[50]";
-connectAttr "groupId18.msg" "pit_droid_01RN.phl[51]";
-connectAttr "groupId51.msg" "pit_droid_01RN.phl[52]";
-connectAttr "pit_droid_01RN.phl[53]" "right_upper_armShapeDeformed.iog.og[2].gco"
+connectAttr "pit_droid_rig_mesh.di" "pit_droid_01RN.phl[1]";
+connectAttr "pit_droid_01RN.phl[2]" "groupParts2.ig";
+connectAttr "pit_droid_01RN.phl[3]" "groupParts4.ig";
+connectAttr "pit_droid_01RN.phl[4]" "groupParts6.ig";
+connectAttr "pit_droid_01RN.phl[5]" "groupParts8.ig";
+connectAttr "pit_droid_01RN.phl[6]" "groupParts10.ig";
+connectAttr "pit_droid_01RN.phl[7]" "groupParts12.ig";
+connectAttr "pit_droid_01RN.phl[8]" "groupParts20.ig";
+connectAttr "pit_droid_01RN.phl[9]" "groupParts47.ig";
+connectAttr "pit_droid_01RN.phl[10]" "groupParts44.ig";
+connectAttr "pit_droid_01RN.phl[11]" "groupParts41.ig";
+connectAttr "pit_droid_01RN.phl[12]" "groupParts38.ig";
+connectAttr "pit_droid_01RN.phl[13]" "groupParts35.ig";
+connectAttr "pit_droid_01RN.phl[14]" "groupParts29.ig";
+connectAttr "pit_droid_01RN.phl[15]" "groupParts23.ig";
+connectAttr "pit_droid_01RN.phl[16]" "groupParts65.ig";
+connectAttr "pit_droid_01RN.phl[17]" "groupParts83.ig";
+connectAttr "pit_droid_01RN.phl[18]" "groupParts80.ig";
+connectAttr "pit_droid_01RN.phl[19]" "groupParts77.ig";
+connectAttr "pit_droid_01RN.phl[20]" "groupParts71.ig";
+connectAttr "pit_droid_01RN.phl[21]" "groupParts74.ig";
+connectAttr "pit_droid_01RN.phl[22]" "groupParts56.ig";
+connectAttr "pit_droid_01RN.phl[23]" "groupParts98.ig";
+connectAttr "pit_droid_01RN.phl[24]" "groupParts101.ig";
+connectAttr "pit_droid_01RN.phl[25]" "groupParts104.ig";
+connectAttr "pit_droid_01RN.phl[26]" "groupParts14.ig";
+connectAttr "pit_droid_01RN.phl[27]" "groupParts50.ig";
+connectAttr "pit_droid_01RN.phl[28]" "groupParts53.ig";
+connectAttr "pit_droid_01RN.phl[29]" "groupParts89.ig";
+connectAttr "pit_droid_01RN.phl[30]" "groupParts92.ig";
+connectAttr "pit_droid_01RN.phl[31]" "groupParts95.ig";
+connectAttr "pit_droid_01RN.phl[32]" "groupParts62.ig";
+connectAttr "pit_droid_01RN.phl[33]" "groupParts59.ig";
+connectAttr "pit_droid_01RN.phl[34]" "groupParts32.ig";
+connectAttr "pit_droid_01RN.phl[35]" "groupParts26.ig";
+connectAttr "pit_droid_01RN.phl[36]" "groupParts68.ig";
+connectAttr "pit_droid_01RN.phl[37]" "groupParts86.ig";
+connectAttr "pit_droid_01RN.phl[38]" "groupParts17.ig";
+connectAttr "camera_headShapeDeformed.iog" "pit_droid_01RN.phl[39]";
+connectAttr "camera_eyeShapeDeformed.iog" "pit_droid_01RN.phl[40]";
+connectAttr "camera_accesorieShape2Deformed.iog" "pit_droid_01RN.phl[41]";
+connectAttr "camera_accesorie1ShapeDeformed.iog" "pit_droid_01RN.phl[42]";
+connectAttr "camera_accesorieShapeDeformed.iog" "pit_droid_01RN.phl[43]";
+connectAttr "neckShapeDeformed.iog" "pit_droid_01RN.phl[44]";
+connectAttr "pit_droid_01RN.phl[45]" "hips_Shape1Deformed.iog.og[2].gco";
+connectAttr "pit_droid_01RN.phl[46]" "body_mainShapeDeformed.iog.og[2].gco";
+connectAttr "pit_droid_01RN.phl[47]" "hips_Shape2Deformed.iog.og[2].gco";
+connectAttr "hips_Shape1Deformed.iog.og[2]" "pit_droid_01RN.phl[48]";
+connectAttr "body_mainShapeDeformed.iog.og[2]" "pit_droid_01RN.phl[49]";
+connectAttr "hips_Shape2Deformed.iog.og[2]" "pit_droid_01RN.phl[50]";
+connectAttr "groupId15.msg" "pit_droid_01RN.phl[51]";
+connectAttr "groupId18.msg" "pit_droid_01RN.phl[52]";
+connectAttr "groupId51.msg" "pit_droid_01RN.phl[53]";
+connectAttr "pit_droid_01RN.phl[54]" "right_upper_armShapeDeformed.iog.og[2].gco"
 		;
-connectAttr "pit_droid_01RN.phl[54]" "right_lower_armShapeDeformed.iog.og[2].gco"
+connectAttr "pit_droid_01RN.phl[55]" "right_lower_armShapeDeformed.iog.og[2].gco"
 		;
-connectAttr "pit_droid_01RN.phl[55]" "right_wristShapeDeformed.iog.og[2].gco";
-connectAttr "pit_droid_01RN.phl[56]" "right_1_finger_Shape1Deformed.iog.og[2].gco"
+connectAttr "pit_droid_01RN.phl[56]" "right_wristShapeDeformed.iog.og[2].gco";
+connectAttr "pit_droid_01RN.phl[57]" "right_1_finger_Shape1Deformed.iog.og[2].gco"
 		;
-connectAttr "pit_droid_01RN.phl[57]" "right_1_finger_2ShapeDeformed.iog.og[2].gco"
+connectAttr "pit_droid_01RN.phl[58]" "right_1_finger_2ShapeDeformed.iog.og[2].gco"
 		;
-connectAttr "pit_droid_01RN.phl[58]" "right_2_finger_Shape1Deformed.iog.og[2].gco"
+connectAttr "pit_droid_01RN.phl[59]" "right_2_finger_Shape1Deformed.iog.og[2].gco"
 		;
-connectAttr "pit_droid_01RN.phl[59]" "right_2_finger_Shape2Deformed.iog.og[2].gco"
+connectAttr "pit_droid_01RN.phl[60]" "right_2_finger_Shape2Deformed.iog.og[2].gco"
 		;
-connectAttr "pit_droid_01RN.phl[60]" "right_3_finger_Shape1Deformed.iog.og[2].gco"
+connectAttr "pit_droid_01RN.phl[61]" "right_3_finger_Shape1Deformed.iog.og[2].gco"
 		;
-connectAttr "pit_droid_01RN.phl[61]" "right_3_finger_2ShapeDeformed.iog.og[2].gco"
+connectAttr "pit_droid_01RN.phl[62]" "right_3_finger_2ShapeDeformed.iog.og[2].gco"
 		;
-connectAttr "pit_droid_01RN.phl[62]" "left_upper_armShapeDeformed.iog.og[2].gco"
+connectAttr "pit_droid_01RN.phl[63]" "left_upper_armShapeDeformed.iog.og[2].gco"
 		;
-connectAttr "pit_droid_01RN.phl[63]" "left_lower_armShapeDeformed.iog.og[2].gco"
+connectAttr "pit_droid_01RN.phl[64]" "left_lower_armShapeDeformed.iog.og[2].gco"
 		;
-connectAttr "pit_droid_01RN.phl[64]" "left_wristShapeDeformed.iog.og[2].gco";
-connectAttr "pit_droid_01RN.phl[65]" "left_3_finger_Shape1Deformed.iog.og[2].gco"
+connectAttr "pit_droid_01RN.phl[65]" "left_wristShapeDeformed.iog.og[2].gco";
+connectAttr "pit_droid_01RN.phl[66]" "left_3_finger_Shape1Deformed.iog.og[2].gco"
 		;
-connectAttr "pit_droid_01RN.phl[66]" "left_3_finger_Shape2Deformed.iog.og[2].gco"
+connectAttr "pit_droid_01RN.phl[67]" "left_3_finger_Shape2Deformed.iog.og[2].gco"
 		;
-connectAttr "pit_droid_01RN.phl[67]" "left_2_finger_Shape2Deformed.iog.og[2].gco"
+connectAttr "pit_droid_01RN.phl[68]" "left_2_finger_Shape2Deformed.iog.og[2].gco"
 		;
-connectAttr "pit_droid_01RN.phl[68]" "left_2_finger_Shape1Deformed.iog.og[2].gco"
+connectAttr "pit_droid_01RN.phl[69]" "left_2_finger_Shape1Deformed.iog.og[2].gco"
 		;
-connectAttr "pit_droid_01RN.phl[69]" "left_1_finger_Shape1Deformed.iog.og[2].gco"
+connectAttr "pit_droid_01RN.phl[70]" "left_1_finger_Shape1Deformed.iog.og[2].gco"
 		;
-connectAttr "pit_droid_01RN.phl[70]" "left_1_finger_2ShapeDeformed.iog.og[2].gco"
+connectAttr "pit_droid_01RN.phl[71]" "left_1_finger_2ShapeDeformed.iog.og[2].gco"
 		;
-connectAttr "right_upper_armShapeDeformed.iog.og[2]" "pit_droid_01RN.phl[71]";
-connectAttr "right_lower_armShapeDeformed.iog.og[2]" "pit_droid_01RN.phl[72]";
-connectAttr "right_wristShapeDeformed.iog.og[2]" "pit_droid_01RN.phl[73]";
-connectAttr "right_1_finger_Shape1Deformed.iog.og[2]" "pit_droid_01RN.phl[74]";
-connectAttr "right_1_finger_2ShapeDeformed.iog.og[2]" "pit_droid_01RN.phl[75]";
-connectAttr "right_2_finger_Shape1Deformed.iog.og[2]" "pit_droid_01RN.phl[76]";
-connectAttr "right_2_finger_Shape2Deformed.iog.og[2]" "pit_droid_01RN.phl[77]";
-connectAttr "right_3_finger_Shape1Deformed.iog.og[2]" "pit_droid_01RN.phl[78]";
-connectAttr "right_3_finger_2ShapeDeformed.iog.og[2]" "pit_droid_01RN.phl[79]";
-connectAttr "left_upper_armShapeDeformed.iog.og[2]" "pit_droid_01RN.phl[80]";
-connectAttr "left_lower_armShapeDeformed.iog.og[2]" "pit_droid_01RN.phl[81]";
-connectAttr "left_wristShapeDeformed.iog.og[2]" "pit_droid_01RN.phl[82]";
-connectAttr "left_3_finger_Shape1Deformed.iog.og[2]" "pit_droid_01RN.phl[83]";
-connectAttr "left_3_finger_Shape2Deformed.iog.og[2]" "pit_droid_01RN.phl[84]";
-connectAttr "left_2_finger_Shape2Deformed.iog.og[2]" "pit_droid_01RN.phl[85]";
-connectAttr "left_2_finger_Shape1Deformed.iog.og[2]" "pit_droid_01RN.phl[86]";
-connectAttr "left_1_finger_Shape1Deformed.iog.og[2]" "pit_droid_01RN.phl[87]";
-connectAttr "left_1_finger_2ShapeDeformed.iog.og[2]" "pit_droid_01RN.phl[88]";
-connectAttr "groupId21.msg" "pit_droid_01RN.phl[89]";
-connectAttr "groupId24.msg" "pit_droid_01RN.phl[90]";
-connectAttr "groupId27.msg" "pit_droid_01RN.phl[91]";
-connectAttr "groupId30.msg" "pit_droid_01RN.phl[92]";
-connectAttr "groupId33.msg" "pit_droid_01RN.phl[93]";
-connectAttr "groupId36.msg" "pit_droid_01RN.phl[94]";
-connectAttr "groupId39.msg" "pit_droid_01RN.phl[95]";
-connectAttr "groupId42.msg" "pit_droid_01RN.phl[96]";
-connectAttr "groupId45.msg" "pit_droid_01RN.phl[97]";
-connectAttr "groupId48.msg" "pit_droid_01RN.phl[98]";
-connectAttr "groupId66.msg" "pit_droid_01RN.phl[99]";
-connectAttr "groupId69.msg" "pit_droid_01RN.phl[100]";
-connectAttr "groupId72.msg" "pit_droid_01RN.phl[101]";
-connectAttr "groupId75.msg" "pit_droid_01RN.phl[102]";
-connectAttr "groupId78.msg" "pit_droid_01RN.phl[103]";
-connectAttr "groupId81.msg" "pit_droid_01RN.phl[104]";
-connectAttr "groupId84.msg" "pit_droid_01RN.phl[105]";
-connectAttr "groupId87.msg" "pit_droid_01RN.phl[106]";
-connectAttr "pit_droid_01RN.phl[107]" "left_upper_legShapeDeformed.iog.og[2].gco"
+connectAttr "right_upper_armShapeDeformed.iog.og[2]" "pit_droid_01RN.phl[72]";
+connectAttr "right_lower_armShapeDeformed.iog.og[2]" "pit_droid_01RN.phl[73]";
+connectAttr "right_wristShapeDeformed.iog.og[2]" "pit_droid_01RN.phl[74]";
+connectAttr "right_1_finger_Shape1Deformed.iog.og[2]" "pit_droid_01RN.phl[75]";
+connectAttr "right_1_finger_2ShapeDeformed.iog.og[2]" "pit_droid_01RN.phl[76]";
+connectAttr "right_2_finger_Shape1Deformed.iog.og[2]" "pit_droid_01RN.phl[77]";
+connectAttr "right_2_finger_Shape2Deformed.iog.og[2]" "pit_droid_01RN.phl[78]";
+connectAttr "right_3_finger_Shape1Deformed.iog.og[2]" "pit_droid_01RN.phl[79]";
+connectAttr "right_3_finger_2ShapeDeformed.iog.og[2]" "pit_droid_01RN.phl[80]";
+connectAttr "left_upper_armShapeDeformed.iog.og[2]" "pit_droid_01RN.phl[81]";
+connectAttr "left_lower_armShapeDeformed.iog.og[2]" "pit_droid_01RN.phl[82]";
+connectAttr "left_wristShapeDeformed.iog.og[2]" "pit_droid_01RN.phl[83]";
+connectAttr "left_3_finger_Shape1Deformed.iog.og[2]" "pit_droid_01RN.phl[84]";
+connectAttr "left_3_finger_Shape2Deformed.iog.og[2]" "pit_droid_01RN.phl[85]";
+connectAttr "left_2_finger_Shape2Deformed.iog.og[2]" "pit_droid_01RN.phl[86]";
+connectAttr "left_2_finger_Shape1Deformed.iog.og[2]" "pit_droid_01RN.phl[87]";
+connectAttr "left_1_finger_Shape1Deformed.iog.og[2]" "pit_droid_01RN.phl[88]";
+connectAttr "left_1_finger_2ShapeDeformed.iog.og[2]" "pit_droid_01RN.phl[89]";
+connectAttr "groupId21.msg" "pit_droid_01RN.phl[90]";
+connectAttr "groupId24.msg" "pit_droid_01RN.phl[91]";
+connectAttr "groupId27.msg" "pit_droid_01RN.phl[92]";
+connectAttr "groupId30.msg" "pit_droid_01RN.phl[93]";
+connectAttr "groupId33.msg" "pit_droid_01RN.phl[94]";
+connectAttr "groupId36.msg" "pit_droid_01RN.phl[95]";
+connectAttr "groupId39.msg" "pit_droid_01RN.phl[96]";
+connectAttr "groupId42.msg" "pit_droid_01RN.phl[97]";
+connectAttr "groupId45.msg" "pit_droid_01RN.phl[98]";
+connectAttr "groupId48.msg" "pit_droid_01RN.phl[99]";
+connectAttr "groupId66.msg" "pit_droid_01RN.phl[100]";
+connectAttr "groupId69.msg" "pit_droid_01RN.phl[101]";
+connectAttr "groupId72.msg" "pit_droid_01RN.phl[102]";
+connectAttr "groupId75.msg" "pit_droid_01RN.phl[103]";
+connectAttr "groupId78.msg" "pit_droid_01RN.phl[104]";
+connectAttr "groupId81.msg" "pit_droid_01RN.phl[105]";
+connectAttr "groupId84.msg" "pit_droid_01RN.phl[106]";
+connectAttr "groupId87.msg" "pit_droid_01RN.phl[107]";
+connectAttr "pit_droid_01RN.phl[108]" "left_upper_legShapeDeformed.iog.og[2].gco"
 		;
-connectAttr "pit_droid_01RN.phl[108]" "lef_lower_legShapeDeformed.iog.og[2].gco"
+connectAttr "pit_droid_01RN.phl[109]" "lef_lower_legShapeDeformed.iog.og[2].gco"
 		;
-connectAttr "pit_droid_01RN.phl[109]" "right_upper_legShapeDeformed.iog.og[2].gco"
+connectAttr "pit_droid_01RN.phl[110]" "right_upper_legShapeDeformed.iog.og[2].gco"
 		;
-connectAttr "pit_droid_01RN.phl[110]" "right_lower_legShapeDeformed.iog.og[2].gco"
+connectAttr "pit_droid_01RN.phl[111]" "right_lower_legShapeDeformed.iog.og[2].gco"
 		;
-connectAttr "pit_droid_01RN.phl[111]" "right_foorShapeDeformed.iog.og[2].gco";
-connectAttr "pit_droid_01RN.phl[112]" "right_toe_Shape1Deformed.iog.og[2].gco";
-connectAttr "pit_droid_01RN.phl[113]" "right_toe_Shape2Deformed.iog.og[2].gco";
-connectAttr "pit_droid_01RN.phl[114]" "left_footShapeDeformed.iog.og[2].gco";
-connectAttr "pit_droid_01RN.phl[115]" "left_toe_Shape2Deformed.iog.og[2].gco";
-connectAttr "pit_droid_01RN.phl[116]" "left_toe_Shape1Deformed.iog.og[2].gco";
-connectAttr "left_upper_legShapeDeformed.iog.og[2]" "pit_droid_01RN.phl[117]";
-connectAttr "lef_lower_legShapeDeformed.iog.og[2]" "pit_droid_01RN.phl[118]";
-connectAttr "right_upper_legShapeDeformed.iog.og[2]" "pit_droid_01RN.phl[119]";
-connectAttr "right_lower_legShapeDeformed.iog.og[2]" "pit_droid_01RN.phl[120]";
-connectAttr "right_foorShapeDeformed.iog.og[2]" "pit_droid_01RN.phl[121]";
-connectAttr "right_toe_Shape1Deformed.iog.og[2]" "pit_droid_01RN.phl[122]";
-connectAttr "right_toe_Shape2Deformed.iog.og[2]" "pit_droid_01RN.phl[123]";
-connectAttr "left_footShapeDeformed.iog.og[2]" "pit_droid_01RN.phl[124]";
-connectAttr "left_toe_Shape2Deformed.iog.og[2]" "pit_droid_01RN.phl[125]";
-connectAttr "left_toe_Shape1Deformed.iog.og[2]" "pit_droid_01RN.phl[126]";
-connectAttr "groupId54.msg" "pit_droid_01RN.phl[127]";
-connectAttr "groupId57.msg" "pit_droid_01RN.phl[128]";
-connectAttr "groupId60.msg" "pit_droid_01RN.phl[129]";
-connectAttr "groupId63.msg" "pit_droid_01RN.phl[130]";
-connectAttr "groupId90.msg" "pit_droid_01RN.phl[131]";
-connectAttr "groupId93.msg" "pit_droid_01RN.phl[132]";
-connectAttr "groupId96.msg" "pit_droid_01RN.phl[133]";
-connectAttr "groupId99.msg" "pit_droid_01RN.phl[134]";
-connectAttr "groupId102.msg" "pit_droid_01RN.phl[135]";
-connectAttr "groupId105.msg" "pit_droid_01RN.phl[136]";
+connectAttr "pit_droid_01RN.phl[112]" "right_foorShapeDeformed.iog.og[2].gco";
+connectAttr "pit_droid_01RN.phl[113]" "right_toe_Shape1Deformed.iog.og[2].gco";
+connectAttr "pit_droid_01RN.phl[114]" "right_toe_Shape2Deformed.iog.og[2].gco";
+connectAttr "pit_droid_01RN.phl[115]" "left_footShapeDeformed.iog.og[2].gco";
+connectAttr "pit_droid_01RN.phl[116]" "left_toe_Shape2Deformed.iog.og[2].gco";
+connectAttr "pit_droid_01RN.phl[117]" "left_toe_Shape1Deformed.iog.og[2].gco";
+connectAttr "left_upper_legShapeDeformed.iog.og[2]" "pit_droid_01RN.phl[118]";
+connectAttr "lef_lower_legShapeDeformed.iog.og[2]" "pit_droid_01RN.phl[119]";
+connectAttr "right_upper_legShapeDeformed.iog.og[2]" "pit_droid_01RN.phl[120]";
+connectAttr "right_lower_legShapeDeformed.iog.og[2]" "pit_droid_01RN.phl[121]";
+connectAttr "right_foorShapeDeformed.iog.og[2]" "pit_droid_01RN.phl[122]";
+connectAttr "right_toe_Shape1Deformed.iog.og[2]" "pit_droid_01RN.phl[123]";
+connectAttr "right_toe_Shape2Deformed.iog.og[2]" "pit_droid_01RN.phl[124]";
+connectAttr "left_footShapeDeformed.iog.og[2]" "pit_droid_01RN.phl[125]";
+connectAttr "left_toe_Shape2Deformed.iog.og[2]" "pit_droid_01RN.phl[126]";
+connectAttr "left_toe_Shape1Deformed.iog.og[2]" "pit_droid_01RN.phl[127]";
+connectAttr "groupId54.msg" "pit_droid_01RN.phl[128]";
+connectAttr "groupId57.msg" "pit_droid_01RN.phl[129]";
+connectAttr "groupId60.msg" "pit_droid_01RN.phl[130]";
+connectAttr "groupId63.msg" "pit_droid_01RN.phl[131]";
+connectAttr "groupId90.msg" "pit_droid_01RN.phl[132]";
+connectAttr "groupId93.msg" "pit_droid_01RN.phl[133]";
+connectAttr "groupId96.msg" "pit_droid_01RN.phl[134]";
+connectAttr "groupId99.msg" "pit_droid_01RN.phl[135]";
+connectAttr "groupId102.msg" "pit_droid_01RN.phl[136]";
+connectAttr "groupId105.msg" "pit_droid_01RN.phl[137]";
 connectAttr "root_jnt_parentConstraint1.ctx" "root_jnt.tx";
 connectAttr "root_jnt_parentConstraint1.cty" "root_jnt.ty";
 connectAttr "root_jnt_parentConstraint1.ctz" "root_jnt.tz";
@@ -19490,6 +19542,7 @@ connectAttr "bindPose27.m[4]" "bindPose27.p[5]";
 connectAttr "bindPose27.m[5]" "bindPose27.p[6]";
 connectAttr "skinCluster37.og[0]" "groupParts105.ig";
 connectAttr "groupId105.id" "groupParts105.gi";
+connectAttr "layerManager.dli[1]" "pit_droid_rig_mesh.id";
 connectAttr "defaultRenderLayer.msg" ":defaultRenderingList1.r" -na;
 connectAttr "ikRPsolver.msg" ":ikSystem.sol" -na;
 connectAttr "finger_1_L_3_jnt.msg" ":hyperGraphLayout.hyp[12].dn";
